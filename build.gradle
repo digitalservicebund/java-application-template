@@ -31,5 +31,27 @@ dependencies {
 }
 
 test {
-	useJUnitPlatform()
+	useJUnitPlatform {
+		excludeTags 'integration'
+	}
+	testLogging {
+		events 'passed', 'skipped', 'failed'
+	}
 }
+
+task integrationTest(type: Test) {
+	description = 'Runs the integration tests.'
+	group = 'verification'
+	// So that running integration test require running unit tests first,
+	// and we won't even attempt running integration tests when there are
+	// failing unit tests.
+	dependsOn test
+	useJUnitPlatform {
+		includeTags 'integration'
+	}
+	testLogging {
+		events 'passed', 'skipped', 'failed'
+	}
+}
+
+check.dependsOn integrationTest
