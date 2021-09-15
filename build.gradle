@@ -3,6 +3,7 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
     id 'com.diffplug.spotless' version '5.15.0'
+    id 'jacoco'
 }
 
 group = 'org.4germany'
@@ -43,19 +44,40 @@ test {
 task integrationTest(type: Test) {
     description = 'Runs the integration tests.'
     group = 'verification'
-    // So that running integration test require running unit tests first,
-    // and we won't even attempt running integration tests when there are
-    // failing unit tests.
-    dependsOn test
     useJUnitPlatform {
         includeTags 'integration'
     }
     testLogging {
         events 'passed', 'skipped', 'failed'
     }
+    // So that running integration test require running unit tests first,
+    // and we won't even attempt running integration tests when there are
+    // failing unit tests.
+    dependsOn test
 }
 
 check.dependsOn integrationTest
+
+jacocoTestReport {
+    reports {
+        xml.required = false
+        csv.required = false
+        html.required = false
+    }
+}
+
+task combineJacocoReports(type: JacocoReport) {
+    executionData fileTree(project.buildDir.absolutePath).include("jacoco/*.exec")
+    classDirectories.setFrom files(project.sourceSets.main.output)
+    sourceDirectories.setFrom files(project.sourceSets.main.allSource.srcDirs)
+    reports {
+        html.required = true
+        html.outputLocation = layout.buildDirectory.dir('reports/jacoco')
+    }
+    dependsOn integrationTest // All tests are required to run before generating the report..
+}
+
+integrationTest.finalizedBy combineJacocoReports
 
 spotless {
     java {
