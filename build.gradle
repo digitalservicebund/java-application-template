@@ -87,12 +87,15 @@ spotless {
   groovyGradle {
     greclipse().configFile("greclipse.properties")
   }
+
+  def prettierVersion = "2.4.1"
+
   format "markdown", {
     target "**/*.md"
-    prettier()
+    prettier(prettierVersion)
   }
   format "properties", {
     target "**/*.properties"
-    prettier(["prettier": "2.4.1", "prettier-plugin-properties": "0.1.0"]).config(["keySeparator": "="])
+    prettier(["prettier": prettierVersion, "prettier-plugin-properties": "0.1.0"]).config(["keySeparator": "="])
   }
 }
