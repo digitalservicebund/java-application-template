@@ -1,0 +1,8 @@
+pre-commit:
+  commands:
+    secrets-audit:
+      tags: security
+      run: talisman --githook pre-commit
+    check-format:
+      tags: style
+      run: ./gradlew spotlessCheck
