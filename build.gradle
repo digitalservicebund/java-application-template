@@ -4,6 +4,7 @@ plugins {
   id "java"
   id "com.diffplug.spotless" version "5.15.0"
   id "jacoco"
+  id "org.owasp.dependencycheck" version "6.3.1"
 }
 
 group = "org.4germany"
