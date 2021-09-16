@@ -1,91 +1,94 @@
 plugins {
-    id 'org.springframework.boot' version '2.5.4'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-    id 'java'
-    id 'com.diffplug.spotless' version '5.15.0'
-    id 'jacoco'
+  id "org.springframework.boot" version "2.5.4"
+  id "io.spring.dependency-management" version "1.0.11.RELEASE"
+  id "java"
+  id "com.diffplug.spotless" version "5.15.0"
+  id "jacoco"
 }
 
-group = 'org.4germany'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+group = "org.4germany"
+version = "0.0.1-SNAPSHOT"
+sourceCompatibility = "11"
 
 configurations {
-    compileOnly {
-        extendsFrom annotationProcessor
-    }
+  compileOnly {
+    extendsFrom annotationProcessor
+  }
 }
 
 repositories {
-    mavenCentral()
+  mavenCentral()
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-actuator'
-    implementation 'org.springframework.boot:spring-boot-starter-security'
-    implementation 'org.springframework.boot:spring-boot-starter-webflux'
-    compileOnly 'org.projectlombok:lombok'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'io.projectreactor:reactor-test'
-    testImplementation 'org.springframework.security:spring-security-test'
+  implementation "org.springframework.boot:spring-boot-starter-actuator"
+  implementation "org.springframework.boot:spring-boot-starter-security"
+  implementation "org.springframework.boot:spring-boot-starter-webflux"
+  compileOnly "org.projectlombok:lombok"
+  developmentOnly "org.springframework.boot:spring-boot-devtools"
+  annotationProcessor "org.projectlombok:lombok"
+  testImplementation "org.springframework.boot:spring-boot-starter-test"
+  testImplementation "io.projectreactor:reactor-test"
+  testImplementation "org.springframework.security:spring-security-test"
 }
 
 test {
-    useJUnitPlatform {
-        excludeTags 'integration'
-    }
-    testLogging {
-        events 'passed', 'skipped', 'failed'
-    }
+  useJUnitPlatform {
+    excludeTags "integration"
+  }
+  testLogging {
+    events "passed", "skipped", "failed"
+  }
 }
 
 task integrationTest(type: Test) {
-    description = 'Runs the integration tests.'
-    group = 'verification'
-    useJUnitPlatform {
-        includeTags 'integration'
-    }
-    testLogging {
-        events 'passed', 'skipped', 'failed'
-    }
-    // So that running integration test require running unit tests first,
-    // and we won't even attempt running integration tests when there are
-    // failing unit tests.
-    dependsOn test
+  description = "Runs the integration tests."
+  group = "verification"
+  useJUnitPlatform {
+    includeTags "integration"
+  }
+  testLogging {
+    events "passed", "skipped", "failed"
+  }
+  // So that running integration test require running unit tests first,
+  // and we won"t even attempt running integration tests when there are
+  // failing unit tests.
+  dependsOn test
 }
 
 check.dependsOn integrationTest
 
 jacocoTestReport {
-    reports {
-        xml.required = false
-        csv.required = false
-        html.required = false
-    }
+  reports {
+    xml.required = false
+    csv.required = false
+    html.required = false
+  }
 }
 
 task combineJacocoReports(type: JacocoReport) {
-    executionData fileTree(project.buildDir.absolutePath).include("jacoco/*.exec")
-    classDirectories.setFrom files(project.sourceSets.main.output)
-    sourceDirectories.setFrom files(project.sourceSets.main.allSource.srcDirs)
-    reports {
-        html.required = true
-        html.outputLocation = layout.buildDirectory.dir('reports/jacoco')
-    }
-    dependsOn integrationTest // All tests are required to run before generating the report..
+  executionData fileTree(project.buildDir.absolutePath).include("jacoco/*.exec")
+  classDirectories.setFrom files(project.sourceSets.main.output)
+  sourceDirectories.setFrom files(project.sourceSets.main.allSource.srcDirs)
+  reports {
+    html.required = true
+    html.outputLocation = layout.buildDirectory.dir("reports/jacoco")
+  }
+  dependsOn integrationTest // All tests are required to run before generating the report..
 }
 
 integrationTest.finalizedBy combineJacocoReports
 
 spotless {
-    java {
-        removeUnusedImports()
-        googleJavaFormat()
-    }
-    format 'markdown', {
-        prettier()
-        target '**/*.md'
-    }
+  java {
+    removeUnusedImports()
+    googleJavaFormat()
+  }
+  groovyGradle {
+    greclipse().configFile("greclipse.properties")
+  }
+  format "markdown", {
+    prettier()
+    target "**/*.md"
+  }
 }
