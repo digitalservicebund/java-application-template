@@ -88,7 +88,11 @@ spotless {
     greclipse().configFile("greclipse.properties")
   }
   format "markdown", {
-    prettier()
     target "**/*.md"
+    prettier()
+  }
+  format "properties", {
+    target "**/*.properties"
+    prettier(["prettier": "2.4.1", "prettier-plugin-properties": "0.1.0"]).config(["keySeparator": "="])
   }
 }
