@@ -1,1 +1,1 @@
-# RIS Backend Service
+# RIS Backend Service [![Build](https://github.com/digitalservice4germany/ris-backend-service/actions/workflows/build.yml/badge.svg)](https://github.com/digitalservice4germany/ris-backend-service/actions/workflows/build.yml)
