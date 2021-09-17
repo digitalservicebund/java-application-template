@@ -4,9 +4,14 @@ commit-msg:
       run: npx commitlint --edit
 pre-commit:
   commands:
+    parallel: true
     secrets-audit:
       tags: security
       run: talisman --githook pre-commit
     check-format:
       tags: style
       run: ./gradlew spotlessCheck
+    shellcheck:
+      tags: style
+      glob: "*.sh"
+      run: shellcheck {staged_files}
