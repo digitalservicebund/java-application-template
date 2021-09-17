@@ -93,7 +93,7 @@ spotless {
   def prettierVersion = "2.4.1"
 
   format "misc", {
-    target "**/*.md", "**/*.yml"
+    target "**/*.js", "**/*.md", "**/*.yml"
     prettier(prettierVersion)
   }
   format "properties", {
