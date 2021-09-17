@@ -101,3 +101,8 @@ spotless {
     prettier(["prettier": prettierVersion, "prettier-plugin-properties": "0.1.0"]).config(["keySeparator": "="])
   }
 }
+
+dependencyCheck {
+  format = "JSON"
+  failBuildOnCVSS = 7 // Severity: High
+}
