@@ -1,1 +1,1 @@
-# verika-backend-service
+# RIS Backend Service
