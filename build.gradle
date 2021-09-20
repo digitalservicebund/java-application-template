@@ -110,3 +110,12 @@ dependencyCheck {
   format = "JSON"
   failBuildOnCVSS = 7 // Severity: High
 }
+
+bootBuildImage {
+  docker {
+    publishRegistry {
+      token = System.getenv("GITHUB_TOKEN")
+      url = "https://" + System.getenv("REGISTRY")
+    }
+  }
+}
