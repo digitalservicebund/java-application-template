@@ -20,7 +20,7 @@ _info() {
 }
 
 _setup() {
-  if ! command -v lefthook >/dev/null 2>&1; then
+  if ! command -v lefthook > /dev/null 2>&1; then
     _fail "This setup needs lefthook, please install first: \`brew install lefthook\`"
     exit 1
   fi
@@ -37,6 +37,6 @@ _help() {
 }
 
 case "$@" in
-"setup") _setup;;
-*) _help;;
+  "setup") _setup ;;
+  *) _help ;;
 esac

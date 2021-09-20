@@ -11,7 +11,3 @@ pre-commit:
     check-format:
       tags: style
       run: ./gradlew spotlessCheck
-    shellcheck:
-      tags: style
-      glob: "*.sh"
-      run: shellcheck {staged_files}

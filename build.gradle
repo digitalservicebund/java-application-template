@@ -100,6 +100,10 @@ spotless {
     target "**/*.properties"
     prettier(["prettier": prettierVersion, "prettier-plugin-properties": "0.1.0"]).config(["keySeparator": "="])
   }
+  format "shellscript", {
+    target "**/*.sh"
+    prettier(["prettier": prettierVersion, "prettier-plugin-sh": "0.7.1"])
+  }
 }
 
 dependencyCheck {
