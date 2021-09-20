@@ -1,5 +1,5 @@
 fileignoreconfig:
   - filename: .github/workflows/deploy.yml
-    checksum: 21d6cebea7432080ff6a502f5dcd0acfd2b8f8a3e8c8cadfcf5df2a8c955a110
+    checksum: 2edbff66419f8abeb31a1d814299075bdb43cbc6a846259945d5d8968cdc8393
   - filename: README.md
     checksum: bc2660b06e2843f2cc67d365a1beb23b659ff1dc019ef5392c32537cb9b42609

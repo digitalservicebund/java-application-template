@@ -114,7 +114,7 @@ dependencyCheck {
 bootBuildImage {
   docker {
     publishRegistry {
-      token = System.getenv("GITHUB_TOKEN")
+      token = System.getenv("TOKEN")
       url = "https://" + System.getenv("REGISTRY")
     }
   }
