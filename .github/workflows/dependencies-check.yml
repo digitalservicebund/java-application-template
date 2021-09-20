@@ -5,7 +5,7 @@ name: Dependencies Check
 
 on:
   schedule:
-    - cron: "0 8 * * *" # Every day at 8am
+    - cron: "0 6 * * *" # Every day at 8am
   workflow_dispatch: # Also allow to run this workflow manually
 
 jobs:
