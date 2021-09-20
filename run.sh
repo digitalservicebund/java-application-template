@@ -1,6 +1,11 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
-set -euo pipefail
+set -eu
+
+readonly DEBUG=${DEBUG:-unset}
+if [ "${DEBUG}" != unset ]; then
+  set -x
+fi
 
 _fail() {
   printf "\033[0;31m==> %s\033[0m\n" "$1"
@@ -15,10 +20,9 @@ _info() {
 }
 
 _setup() {
-  if ! command -v lefthook &> /dev/null
-  then
-    _fail "lefthook could not be found, please install first: \`brew install lefthook\`"
-    exit
+  if ! command -v lefthook >/dev/null 2>&1; then
+    _fail "This setup needs lefthook, please install first: \`brew install lefthook\`"
+    exit 1
   fi
   _info "Installing git hooks..."
   lefthook install
