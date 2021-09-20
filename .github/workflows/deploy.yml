@@ -12,7 +12,8 @@ on:
       - completed
 
 env:
-  REGISTRY: ghcr.io
+  CONTAINER_REGISTRY: ghcr.io
+  CONTAINER_REGISTRY_USER: ${{ github.actor }}
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
@@ -36,4 +37,4 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and publish container image
-        run: TOKEN=${{ secrets.GITHUB_TOKEN }} ./gradlew bootBuildImage --imageName=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest --publishImage
+        run: CONTAINER_REGISTRY_PASSWORD=${{ secrets.GITHUB_TOKEN }} ./gradlew bootBuildImage --publishImage

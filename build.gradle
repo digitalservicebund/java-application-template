@@ -112,10 +112,12 @@ dependencyCheck {
 }
 
 bootBuildImage {
+  imageName = System.getenv("CONTAINER_REGISTRY") + "/" + System.getenv("CONTAINER_IMAGE_NAME") + ":latest"
   docker {
     publishRegistry {
-      token = System.getenv("TOKEN")
-      url = "https://" + System.getenv("REGISTRY")
+      username = System.getenv("CONTAINER_REGISTRY_USER")
+      password = System.getenv("CONTAINER_REGISTRY_PASSWORD")
+      url = "https://" + System.getenv("CONTAINER_REGISTRY")
     }
   }
 }
