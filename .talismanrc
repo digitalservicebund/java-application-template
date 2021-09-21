@@ -1,7 +1,6 @@
 fileignoreconfig:
+  - filename: README.md
+    checksum: e81ce4077c1b0a58c74bb170e8c74d78bddd4478b5dd55d7e9425d585187e7cc
   - filename: build.gradle
     checksum: 76da0033498609550425682b90823337f7120d03b7f7e4d5755b0e3d3c6ef933
-  - filename: .github/workflows/deploy.yml
-    checksum: d5df8f7b5b9ab45f92f72938564d3d334de212a13b5fb7ddb0fb94283b901189
-  - filename: README.md
-    checksum: bc2660b06e2843f2cc67d365a1beb23b659ff1dc019ef5392c32537cb9b42609
+version: ""
