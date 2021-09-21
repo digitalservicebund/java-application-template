@@ -112,7 +112,9 @@ dependencyCheck {
 }
 
 bootBuildImage {
-  imageName = System.getenv("CONTAINER_REGISTRY") + "/" + System.getenv("CONTAINER_IMAGE_NAME") + ":latest"
+  imageName = System.getenv("CONTAINER_REGISTRY") + "/" +
+          System.getenv("CONTAINER_IMAGE_NAME") + ":" +
+          System.getenv("CONTAINER_IMAGE_VERSION")
   docker {
     publishRegistry {
       username = System.getenv("CONTAINER_REGISTRY_USER")

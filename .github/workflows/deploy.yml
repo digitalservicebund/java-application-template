@@ -17,6 +17,7 @@ env:
   CONTAINER_REGISTRY: ghcr.io
   CONTAINER_REGISTRY_USER: ${{ github.actor }}
   CONTAINER_IMAGE_NAME: ${{ github.repository }}
+  CONTAINER_IMAGE_VERSION: ${{ github.sha }}
 
 jobs:
   deploy:
