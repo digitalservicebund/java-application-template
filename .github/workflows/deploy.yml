@@ -3,13 +3,15 @@
 
 name: Deploy
 
-# Execute only on successful build..
 on:
+  # Execute automatically when successfully build
   workflow_run:
     workflows: ["Build"]
     branches: [main]
     types:
       - completed
+  # Also allow to run this workflow manually
+  workflow_dispatch:
 
 env:
   CONTAINER_REGISTRY: ghcr.io
