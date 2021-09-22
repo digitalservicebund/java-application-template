@@ -37,7 +37,6 @@ jobs:
       contents: read
     env:
       CONTAINER_REGISTRY: ghcr.io
-      CONTAINER_REGISTRY_USER: ${{ github.actor }}
       CONTAINER_IMAGE_NAME: ${{ github.repository }}
       CONTAINER_IMAGE_VERSION: ${{ github.sha }}
     steps:
@@ -51,4 +50,4 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Build and publish container image
-        run: CONTAINER_REGISTRY_PASSWORD=${{ secrets.GITHUB_TOKEN }} ./gradlew bootBuildImage --publishImage
+        run: CONTAINER_REGISTRY_USER=${{ github.actor }} CONTAINER_REGISTRY_PASSWORD=${{ secrets.GITHUB_TOKEN }} ./gradlew bootBuildImage --publishImage
