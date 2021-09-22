@@ -3,3 +3,130 @@
 [![Pipeline](https://github.com/digitalservice4germany/ris-backend-service/actions/workflows/pipeline.yml/badge.svg)](https://github.com/digitalservice4germany/ris-backend-service/actions/workflows/pipeline.yml)
 [![Dependencies Check](https://github.com/digitalservice4germany/ris-backend-service/actions/workflows/dependencies-check.yml/badge.svg)](https://github.com/digitalservice4germany/ris-backend-service/actions/workflows/dependencies-check.yml)
 [![Secrets Check](https://github.com/digitalservice4germany/ris-backend-service/actions/workflows/secrets-check.yml/badge.svg)](https://github.com/digitalservice4germany/ris-backend-service/actions/workflows/secrets-check.yml)
+
+Java service built with
+the [Spring WebFlux reactive stack](https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html#spring-webflux)
+.
+
+## Prerequisites
+
+Java 11 (optionally Docker for running the containerized application).
+
+## Getting started
+
+**To get started run:**
+
+```bash
+$ ./run.sh setup
+```
+
+This will install a couple of Git hooks.
+
+## Tests
+
+The project has distinct unit and integration test sets.
+
+**To run just the unit tests:**
+
+```bash
+$ ./gradlew test
+```
+
+**To run the integration tests:**
+
+```bash
+$ ./gradlew integrationTest
+```
+
+**Note:** Running integration tests requires passing unit tests (in Gradle terms: integration tests depend on unit
+tests), so unit tests are going to be run first. In case there are failing unit tests we won't attempt to continue
+running any integration tests.
+
+Denoting an integration test is accomplished by using a JUnit 5 tag annotation: `@Tag("integration")`.
+
+Furthermore, there is another type of test worth mentioning. We're
+using [ArchUnit](https://www.archunit.org/getting-started)
+for ensuring certain architectural characteristics, for instance making sure that there are no cyclic dependencies.
+
+## Formatting
+
+Java source code formatting must conform to the [Google Java Style](https://google.github.io/styleguide/javaguide.html).
+Consistent formatting, for Java as well as various other types of source code, is being enforced
+via [Spotless](https://github.com/diffplug/spotless).
+
+## Git hooks
+
+The repo contains a [Lefthook](https://github.com/evilmartians/lefthook/blob/master/docs/full_guide.md) configuration,
+providing a Git hooks setup out of the box.
+
+**To install these hooks, run:**
+
+```bash
+$ ./run.sh setup
+```
+
+The hooks are supposed to help you to:
+
+- commit properly formatted source code only (and not break the build otherwise)
+- write [conventional commit messages](https://chris.beams.io/posts/git-commit/)
+- not accidentally push [secrets and sensitive information](https://thoughtworks.github.io/talisman/)
+
+## Check dependencies for vulnerabilities
+
+Auditing dependencies for vulnerabilities is done
+using [OWASP Dependency-Check](https://jeremylong.github.io/DependencyCheck/dependency-check-gradle/index.html).
+
+**To run the audit locally:**
+
+```bash
+$ ./gradlew dependencyCheckAnalyze
+```
+
+**Note:** Dependencies are checked on a daily basis in CI.
+
+## Containers
+
+Container images running the application are automatically published to
+the [GitHub Packages Container registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
+.
+
+**To run the latest deployed image:**
+
+```bash
+$ docker run -p8080:8080 "ghcr.io/digitalservice4germany/ris-backend-service:$(git log -1 origin/main --format='%H')"
+```
+
+The service will be accessible at `http://localhost:8080`.
+
+We are using Spring's built-in support for producing an optimized container image:
+
+```bash
+$ ./gradlew bootBuildImage
+$ docker run -p8080:8080 ghcr.io/digitalservice4germany/ris-backend-service
+```
+
+## Deployment
+
+Deployment is usually done automatically by the build-deploy
+pipeline ([GitHub Actions](https://docs.github.com/en/actions) workflow). If you need to push a new container image to
+the registry manually there are two ways to do this:
+
+**Via built-in gradle task:**
+
+```bash
+$ export CONTAINER_REGISTRY=ghcr.io
+$ export CONTAINER_IMAGE_NAME=digitalservice4germany/ris-backend-service
+$ export CONTAINER_IMAGE_VERSION="$(git log -1 --format='%H')"
+$ CONTAINER_REGISTRY_USER=[github-user] CONTAINER_REGISTRY_PASSWORD=[github-token] ./gradlew bootBuildImage --publishImage
+```
+
+**Note:** Make sure you're using a GitHub token with the necessary `write:packages` scope for this to work.
+
+**Using docker:**
+
+```bash
+$ echo [github-token] | docker login ghcr.io -u [github-user] --password-stdin
+$ docker push "ghcr.io/digitalservice4germany/ris-backend-service:$(git log -1 --format='%H')"
+```
+
+**Note:** Make sure you're using a GitHub token with the necessary `write:packages` scope for this to work.
