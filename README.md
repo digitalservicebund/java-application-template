@@ -17,7 +17,7 @@ Java 11 (optionally Docker for running the containerized application).
 **To get started run:**
 
 ```bash
-$ ./run.sh setup
+./run.sh setup
 ```
 
 This will install a couple of Git hooks.
@@ -29,13 +29,13 @@ The project has distinct unit and integration test sets.
 **To run just the unit tests:**
 
 ```bash
-$ ./gradlew test
+./gradlew test
 ```
 
 **To run the integration tests:**
 
 ```bash
-$ ./gradlew integrationTest
+./gradlew integrationTest
 ```
 
 **Note:** Running integration tests requires passing unit tests (in Gradle terms: integration tests depend on unit
@@ -62,7 +62,7 @@ providing a Git hooks setup out of the box.
 **To install these hooks, run:**
 
 ```bash
-$ ./run.sh setup
+./run.sh setup
 ```
 
 The hooks are supposed to help you to:
@@ -79,7 +79,7 @@ using [OWASP Dependency-Check](https://jeremylong.github.io/DependencyCheck/depe
 **To run the audit locally:**
 
 ```bash
-$ ./gradlew dependencyCheckAnalyze
+./gradlew dependencyCheckAnalyze
 ```
 
 **Note:** Dependencies are checked on a daily basis in CI.
@@ -93,7 +93,7 @@ the [GitHub Packages Container registry](https://docs.github.com/en/packages/wor
 **To run the latest deployed image:**
 
 ```bash
-$ docker run -p8080:8080 "ghcr.io/digitalservice4germany/ris-backend-service:$(git log -1 origin/main --format='%H')"
+docker run -p8080:8080 "ghcr.io/digitalservice4germany/ris-backend-service:$(git log -1 origin/main --format='%H')"
 ```
 
 The service will be accessible at `http://localhost:8080`.
@@ -101,8 +101,8 @@ The service will be accessible at `http://localhost:8080`.
 We are using Spring's built-in support for producing an optimized container image:
 
 ```bash
-$ ./gradlew bootBuildImage
-$ docker run -p8080:8080 ghcr.io/digitalservice4germany/ris-backend-service
+./gradlew bootBuildImage
+docker run -p8080:8080 ghcr.io/digitalservice4germany/ris-backend-service
 ```
 
 ## Deployment
@@ -114,10 +114,10 @@ the registry manually there are two ways to do this:
 **Via built-in gradle task:**
 
 ```bash
-$ export CONTAINER_REGISTRY=ghcr.io
-$ export CONTAINER_IMAGE_NAME=digitalservice4germany/ris-backend-service
-$ export CONTAINER_IMAGE_VERSION="$(git log -1 --format='%H')"
-$ CONTAINER_REGISTRY_USER=[github-user] CONTAINER_REGISTRY_PASSWORD=[github-token] ./gradlew bootBuildImage --publishImage
+export CONTAINER_REGISTRY=ghcr.io
+export CONTAINER_IMAGE_NAME=digitalservice4germany/ris-backend-service
+export CONTAINER_IMAGE_VERSION="$(git log -1 --format='%H')"
+CONTAINER_REGISTRY_USER=[github-user] CONTAINER_REGISTRY_PASSWORD=[github-token] ./gradlew bootBuildImage --publishImage
 ```
 
 **Note:** Make sure you're using a GitHub token with the necessary `write:packages` scope for this to work.
@@ -125,8 +125,8 @@ $ CONTAINER_REGISTRY_USER=[github-user] CONTAINER_REGISTRY_PASSWORD=[github-toke
 **Using docker:**
 
 ```bash
-$ echo [github-token] | docker login ghcr.io -u [github-user] --password-stdin
-$ docker push "ghcr.io/digitalservice4germany/ris-backend-service:$(git log -1 --format='%H')"
+echo [github-token] | docker login ghcr.io -u [github-user] --password-stdin
+docker push "ghcr.io/digitalservice4germany/ris-backend-service:$(git log -1 --format='%H')"
 ```
 
 **Note:** Make sure you're using a GitHub token with the necessary `write:packages` scope for this to work.
