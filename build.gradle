@@ -68,6 +68,9 @@ jacocoTestReport {
   }
 }
 
+// Jacoco hooks into all tasks of type: Test automatically, but reports for each of these
+// tasks are kept separately and are not combined out of the box.. we want to gather
+// coverage of our unit and integration tests as a single report!
 task combineJacocoReports(type: JacocoReport) {
   executionData fileTree(project.buildDir.absolutePath).include("jacoco/*.exec")
   classDirectories.setFrom files(project.sourceSets.main.output)
