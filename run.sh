@@ -21,10 +21,14 @@ _info() {
 
 _setup() {
   if ! command -v lefthook > /dev/null 2>&1; then
-    _fail "This setup needs lefthook, please install first: \`brew install lefthook\`"
+    _fail "Setup requires Lefthook, please install first: \`brew install lefthook\`"
     exit 1
   fi
-  _info "Installing git hooks..."
+  if ! command -v talisman > /dev/null 2>&1; then
+    _fail "Setup requires Talisman, please install first: \`brew install talisman\`"
+    exit 1
+  fi
+  _info "Installing Git hooks..."
   lefthook install
   _success "Done"
 }
