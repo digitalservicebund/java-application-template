@@ -34,3 +34,7 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### Lefthook ###
+.lefthook-local
+lefthook-local.yml
