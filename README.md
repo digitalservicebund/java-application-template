@@ -54,6 +54,18 @@ Java source code formatting must conform to the [Google Java Style](https://goog
 Consistent formatting, for Java as well as various other types of source code, is being enforced
 via [Spotless](https://github.com/diffplug/spotless).
 
+**Check formatting:**
+
+```bash
+./gradlew spotlessCheck
+```
+
+**Autoformat sources:**
+
+```bash
+./gradlew spotlessApply
+```
+
 ## Git hooks
 
 The repo contains a [Lefthook](https://github.com/evilmartians/lefthook/blob/master/docs/full_guide.md) configuration,
