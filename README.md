@@ -14,7 +14,13 @@ Java 11 (optionally Docker for running the containerized application).
 
 ## Getting started
 
-**To get started run:**
+**First of all, after creating from template, set the application's name:**
+
+```bash
+./run.sh init
+```
+
+**To get started with development run:**
 
 ```bash
 ./run.sh setup
