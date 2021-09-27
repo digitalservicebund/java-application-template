@@ -15,6 +15,6 @@ class HealthEndpointIntegrationTest {
 
   @Test
   void shouldExposeHealthEndpoint() {
-    this.webTestClient.get().uri("/actuator/health").exchange().expectStatus().isOk();
+    webTestClient.get().uri("/actuator/health").exchange().expectStatus().isOk();
   }
 }
