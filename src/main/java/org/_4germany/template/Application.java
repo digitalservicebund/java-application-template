@@ -1,4 +1,4 @@
-package org._4germany.ris.backend;
+package org._4germany.template;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

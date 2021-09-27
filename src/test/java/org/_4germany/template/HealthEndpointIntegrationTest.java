@@ -1,4 +1,4 @@
-package org._4germany.ris.backend;
+package org._4germany.template;
 
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
