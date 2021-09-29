@@ -6,10 +6,10 @@ import com.tngtech.archunit.junit.AnalyzeClasses;
 import com.tngtech.archunit.junit.ArchTest;
 import com.tngtech.archunit.lang.ArchRule;
 
-@AnalyzeClasses(packages = "org._4germany.template")
+@AnalyzeClasses(packages = "org._4germany")
 class ArchitectureFitnessTest {
 
   @ArchTest
   static final ArchRule preventPackageImportCycles =
-      slices().matching("..template.(*)..").should().beFreeOfCycles();
+      slices().matching("org._4germany.(**)").should().beFreeOfCycles();
 }
