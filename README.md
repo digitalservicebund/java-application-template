@@ -10,7 +10,12 @@ the [Spring WebFlux reactive stack](https://docs.spring.io/spring-framework/docs
 
 ## Prerequisites
 
-Java 11 (optionally Docker for running the containerized application).
+Java 11, Docker for building + running the containerized application:
+
+```bash
+brew install openjdk@11
+brew install --cask docker # or just `brew install docker` if you don't want the Desktop app
+```
 
 For the provided Git hooks you will need:
 
