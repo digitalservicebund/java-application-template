@@ -94,6 +94,20 @@ The hooks are supposed to help you to:
 - write [conventional commit messages](https://chris.beams.io/posts/git-commit/)
 - not accidentally push [secrets and sensitive information](https://thoughtworks.github.io/talisman/)
 
+## Code quality analysis
+
+Continuous code quality analysis is done in the pipeline upon pushes to trunk.
+
+**To run the analysis locally:**
+
+```bash
+SONAR_TOKEN=[github-token] ./gradlew sonarqube
+```
+
+Go
+to [https://sonarcloud.io](https://sonarcloud.io/dashboard?id=digitalservice4germany_java-application-template)
+for the results.
+
 ## Check dependencies for vulnerabilities
 
 Auditing dependencies for vulnerabilities is done

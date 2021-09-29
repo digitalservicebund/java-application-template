@@ -5,6 +5,7 @@ plugins {
   id "com.diffplug.spotless" version "5.15.0"
   id "jacoco"
   id "org.owasp.dependencycheck" version "6.3.1"
+  id "org.sonarqube" version "3.3"
 }
 
 group = "org.4germany"
@@ -61,6 +62,8 @@ task integrationTest(type: Test) {
 check.dependsOn integrationTest
 
 jacocoTestReport {
+  // Skip reports for single test tasks, we are going to have a combined unit + integration
+  // test report, see further below..
   reports {
     xml.required = false
     csv.required = false
@@ -76,6 +79,7 @@ task combineJacocoReports(type: JacocoReport) {
   classDirectories.setFrom files(project.sourceSets.main.output)
   sourceDirectories.setFrom files(project.sourceSets.main.allSource.srcDirs)
   reports {
+    xml.required = true
     html.required = true
     html.outputLocation = layout.buildDirectory.dir("reports/jacoco")
   }
@@ -113,6 +117,18 @@ dependencyCheck {
   format = "JSON"
   failBuildOnCVSS = 7 // Severity: High
 }
+
+sonarqube {
+  // NOTE: sonarqube picks up combined coverage correctly without further configuration from:
+  // build/reports/jacoco/combineJacocoReports/combineJacocoReports.xml
+  properties {
+    property "sonar.projectKey", "digitalservice4germany_java-application-template"
+    property "sonar.organization", "digitalservice4germany"
+    property "sonar.host.url", "https://sonarcloud.io"
+  }
+}
+
+project.tasks["sonarqube"].dependsOn "combineJacocoReports"
 
 bootBuildImage {
   def containerRegistry = System.getenv("CONTAINER_REGISTRY") ?: "ghcr.io"
