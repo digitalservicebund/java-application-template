@@ -12,21 +12,21 @@ the [Spring WebFlux reactive stack](https://docs.spring.io/spring-framework/docs
 
 Java 11 (optionally Docker for running the containerized application).
 
+For the provided Git hooks you will need:
+
+```bash
+brew install lefthook talisman
+```
+
 ## Getting started
 
-**First of all, after creating from template, set the application's name:**
+**To get started with development run:**
 
 ```bash
 ./run.sh init
 ```
 
-**To get started with development run:**
-
-```bash
-./run.sh setup
-```
-
-This will install a couple of Git hooks.
+This will replace placeholders in the application template and install a couple of Git hooks.
 
 ## Tests
 
