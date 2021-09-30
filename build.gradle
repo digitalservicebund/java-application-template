@@ -35,6 +35,11 @@ dependencies {
   testImplementation "com.tngtech.archunit:archunit-junit5:0.21.0"
 }
 
+jar {
+  // We have no need for the plain archive, thus skip creation for build speedup
+  enabled = false
+}
+
 test {
   useJUnitPlatform {
     excludeTags "integration"
