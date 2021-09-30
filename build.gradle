@@ -63,36 +63,22 @@ task integrationTest(type: Test) {
   // and we won"t even attempt running integration tests when there are
   // failing unit tests.
   dependsOn test
+  finalizedBy jacocoTestReport
 }
 
 check.dependsOn integrationTest
 
 jacocoTestReport {
-  // Skip reports for single test tasks, we are going to have a combined unit + integration
-  // test report, see further below..
-  reports {
-    xml.required = false
-    csv.required = false
-    html.required = false
-  }
-}
-
-// Jacoco hooks into all tasks of type: Test automatically, but reports for each of these
-// tasks are kept separately and are not combined out of the box.. we want to gather
-// coverage of our unit and integration tests as a single report!
-task combineJacocoReports(type: JacocoReport) {
+  // Jacoco hooks into all tasks of type: Test automatically, but results for each of these
+  // tasks are kept separately and are not combined out of the box.. we want to gather
+  // coverage of our unit and integration tests as a single report!
   executionData fileTree(project.buildDir.absolutePath).include("jacoco/*.exec")
-  classDirectories.setFrom files(project.sourceSets.main.output)
-  sourceDirectories.setFrom files(project.sourceSets.main.allSource.srcDirs)
   reports {
     xml.required = true
     html.required = true
-    html.outputLocation = layout.buildDirectory.dir("reports/jacoco")
   }
-  dependsOn integrationTest // All tests are required to run before generating the report..
+  dependsOn integrationTest // All tests are required to run before generating a report..
 }
-
-integrationTest.finalizedBy combineJacocoReports
 
 spotless {
   java {
@@ -134,7 +120,7 @@ sonarqube {
   }
 }
 
-project.tasks["sonarqube"].dependsOn "combineJacocoReports"
+project.tasks["sonarqube"].dependsOn jacocoTestReport
 
 bootBuildImage {
   def containerRegistry = System.getenv("CONTAINER_REGISTRY") ?: "ghcr.io"
