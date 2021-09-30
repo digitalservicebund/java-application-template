@@ -37,7 +37,7 @@ dependencies {
 }
 
 jar {
-  // We have no need for the plain archive, thus skip creation for build speedup
+  // We have no need for the plain archive, thus skip creation for build speedup!
   enabled = false
 }
 
