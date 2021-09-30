@@ -20,7 +20,8 @@ brew install --cask docker # or just `brew install docker` if you don't want the
 For the provided Git hooks you will need:
 
 ```bash
-brew install lefthook talisman
+brew install lefthook node talisman
+npm -g install commitlint
 ```
 
 ## Getting started
