@@ -86,7 +86,7 @@ providing a Git hooks setup out of the box.
 **To install these hooks, run:**
 
 ```bash
-./run.sh setup
+./run.sh init
 ```
 
 The hooks are supposed to help you to:
@@ -102,7 +102,7 @@ Continuous code quality analysis is done in the pipeline upon pushes to trunk.
 **To run the analysis locally:**
 
 ```bash
-SONAR_TOKEN=[github-token] ./gradlew sonarqube
+SONAR_TOKEN=[sonar-token] ./gradlew sonarqube
 ```
 
 Go
@@ -149,7 +149,7 @@ Deployment is usually done automatically by the build-deploy
 pipeline ([GitHub Actions](https://docs.github.com/en/actions) workflow). If you need to push a new container image to
 the registry manually there are two ways to do this:
 
-**Via built-in gradle task:**
+**Via built-in Gradle task:**
 
 ```bash
 export CONTAINER_REGISTRY=ghcr.io
@@ -160,7 +160,7 @@ CONTAINER_REGISTRY_USER=[github-user] CONTAINER_REGISTRY_PASSWORD=[github-token]
 
 **Note:** Make sure you're using a GitHub token with the necessary `write:packages` scope for this to work.
 
-**Using docker:**
+**Using Docker:**
 
 ```bash
 echo [github-token] | docker login ghcr.io -u [github-user] --password-stdin
