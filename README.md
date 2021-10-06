@@ -168,3 +168,14 @@ docker push "ghcr.io/digitalservice4germany/java-application-template:$(git log 
 ```
 
 **Note:** Make sure you're using a GitHub token with the necessary `write:packages` scope for this to work.
+
+## Architecture Decision Records
+
+This template incorporates documentation for [architecture decisions](https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions). In order for continue recording
+decisions you'll need another dependency:
+
+```bash
+brew install adr-tools
+```
+
+See https://github.com/npryce/adr-tools regarding usage.
