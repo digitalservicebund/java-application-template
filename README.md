@@ -54,6 +54,12 @@ The project has distinct unit and integration test sets.
 tests), so unit tests are going to be run first. In case there are failing unit tests we won't attempt to continue
 running any integration tests.
 
+**To run integration tests exclusively, without the unit test dependency:**
+
+```bash
+./gradlew integrationTest --exclude-task test
+```
+
 Denoting an integration test is accomplished by using a JUnit 5 tag annotation: `@Tag("integration")`.
 
 Furthermore, there is another type of test worth mentioning. We're
