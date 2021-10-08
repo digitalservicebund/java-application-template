@@ -177,8 +177,8 @@ docker push "ghcr.io/digitalservice4germany/java-application-template:$(git log 
 
 ## Architecture Decision Records
 
-This template incorporates documentation for [architecture decisions](https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions). In order for continue recording
-decisions you'll need another dependency:
+[Architecture decisions](https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions)
+are kept in the `docs/adr` directory. For adding new records install the [adr-tools](https://github.com/npryce/adr-tools) package:
 
 ```bash
 brew install adr-tools
