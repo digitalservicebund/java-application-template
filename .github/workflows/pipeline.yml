@@ -47,11 +47,20 @@ jobs:
           key: ${{ runner.os }}-sonar
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
-      - name: Analyze
+      - name: Scan with SonarQube
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: ./gradlew sonarqube --info
+      - name: Check SonarQube Quality Gate
+        # Third-party action, pin to commit SHA!
+        # See https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions
+        uses: sonarsource/sonarqube-quality-gate-action@15767f0e4eb489cfdd989dc717fa78c038d0de8a # == v1.0.0
+        with:
+          scanMetadataReportFile: build/sonar/report-task.txt
+        timeout-minutes: 3 # Force to fail step after specific time
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   deploy:
     runs-on: ubuntu-latest
