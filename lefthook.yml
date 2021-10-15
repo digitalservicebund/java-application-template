@@ -1,7 +1,7 @@
 commit-msg:
   commands:
     lint-commit-msg:
-      run: npx commitlint --edit
+      run: npx --yes commitlint --edit
 pre-commit:
   commands:
     check-format:

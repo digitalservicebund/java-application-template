@@ -21,7 +21,6 @@ For the provided Git hooks you will need:
 
 ```bash
 brew install lefthook node talisman
-npm -g install commitlint
 ```
 
 ## Getting started
