@@ -26,6 +26,7 @@ dependencies {
   implementation "org.springframework.boot:spring-boot-starter-actuator"
   implementation "org.springframework.boot:spring-boot-starter-security"
   implementation "org.springframework.boot:spring-boot-starter-webflux"
+  implementation "io.netty:netty-all:4.1.69.Final" // => CVE-2021-37136, CVE-2021-37137
   compileOnly "org.projectlombok:lombok"
   developmentOnly "org.springframework.boot:spring-boot-devtools"
   annotationProcessor "org.projectlombok:lombok"
