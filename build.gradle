@@ -34,7 +34,7 @@ dependencies {
   testImplementation "io.projectreactor:reactor-test"
   testImplementation "org.springframework.security:spring-security-test"
   testImplementation "com.tngtech.archunit:archunit-junit5:0.21.0"
-  testImplementation "org.mockito:mockito-junit-jupiter:3.12.4"
+  testImplementation "org.mockito:mockito-junit-jupiter:4.0.0"
 }
 
 jar {
