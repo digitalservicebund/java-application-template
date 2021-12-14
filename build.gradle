@@ -27,6 +27,8 @@ dependencies {
   implementation "org.springframework.boot:spring-boot-starter-security"
   implementation "org.springframework.boot:spring-boot-starter-webflux"
   implementation "io.netty:netty-all:4.1.69.Final" // => CVE-2021-37136, CVE-2021-37137
+  implementation "org.apache.logging.log4j:log4j-api:2.16.0s" // => CVE-2021-44228
+  implementation "org.apache.logging.log4j:log4j-to-slf4j:2.16.0" // => CVE-2021-44228
   compileOnly "org.projectlombok:lombok"
   developmentOnly "org.springframework.boot:spring-boot-devtools"
   annotationProcessor "org.projectlombok:lombok"
