@@ -1,11 +1,11 @@
 fileignoreconfig:
-- filename: README.md
-  checksum: ef113536269b4823b8b2010dfc9afedb211dd62d5977844ee40294eac18b2e4e
-- filename: build.gradle
-  checksum: c1b1ee5fda1592b4c54a5ca185005dc1d5af60bf6ddbf54e694c6e6376f45da9
-- filename: .github/workflows/pipeline.yml
-  checksum: 1bcbb65f6dfa01a7922c48e96957f374bebddea1b7c27c28d203c0220f827d62
-- filename: .github/workflows/secrets-check.yml
-  checksum: 9615146cd643726fc11ce02f5fec82ec04fcb5c1089842bc4e5fd86d70594763
-- filename: .github/workflows/dependencies-check.yml
-  checksum: 1f1fa17197943fac7a52a6f7e697475c0808c3d462266f5e228072c517f4014c
+  - filename: README.md
+    checksum: ef113536269b4823b8b2010dfc9afedb211dd62d5977844ee40294eac18b2e4e
+  - filename: build.gradle
+    checksum: c1b1ee5fda1592b4c54a5ca185005dc1d5af60bf6ddbf54e694c6e6376f45da9
+  - filename: .github/workflows/pipeline.yml
+    checksum: 1bcbb65f6dfa01a7922c48e96957f374bebddea1b7c27c28d203c0220f827d62
+  - filename: .github/workflows/secrets-check.yml
+    checksum: 9615146cd643726fc11ce02f5fec82ec04fcb5c1089842bc4e5fd86d70594763
+  - filename: .github/workflows/dependencies-check.yml
+    checksum: 1f1fa17197943fac7a52a6f7e697475c0808c3d462266f5e228072c517f4014c
