@@ -25,7 +25,7 @@ repositories {
 // Force version for transient dependencies...=> CVE-2021-43797
 configurations.all {
   resolutionStrategy.eachDependency { details ->
-    if (details.requested.group == "io.netty" && details.requested.name != 'netty-tcnative-classes') {
+    if (details.requested.group == "io.netty" && details.requested.name != "netty-tcnative-classes") {
       details.useVersion "4.1.72.Final"
     }
   }
