@@ -148,6 +148,14 @@ We are using Spring's built-in support for producing an optimized container imag
 docker run -p8080:8080 ghcr.io/digitalservice4germany/java-application-template
 ```
 
+Container images in the registry are [signed with keyless signatures](https://github.com/sigstore/cosign/blob/main/KEYLESS.md)
+
+**To verify an image**:
+
+```bash
+COSIGN_EXPERIMENTAL=1 cosign verify "ghcr.io/digitalservice4germany/java-application-template:$(git log -1 origin/main --format='%H')"
+```
+
 ## Deployment
 
 Deployment is usually done automatically by the build-deploy
