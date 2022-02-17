@@ -112,7 +112,7 @@ jobs:
         uses: sigstore/cosign-installer@1e95c1de343b5b0c23352d6417ee3e48d5bcd422
         with:
           cosign-release: "v1.4.0"
-      - name: Log into registry ${{ env.CONTAINER_REGISTRY }}
+      - name: Log into container registry
         # Third-party action, pin to commit SHA!
         # See https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions
         uses: docker/login-action@28218f9b04b4f3f62068d7b6ce6ca5b26e35336c
