@@ -5,8 +5,7 @@
 [![Secrets Check](https://github.com/digitalservice4germany/java-application-template/actions/workflows/secrets-check.yml/badge.svg)](https://github.com/digitalservice4germany/java-application-template/actions/workflows/secrets-check.yml)
 
 Java service built with
-the [Spring WebFlux reactive stack](https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html#spring-webflux)
-.
+the [Spring WebFlux reactive stack](https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html#spring-webflux).
 
 ## Prerequisites
 
@@ -148,7 +147,7 @@ We are using Spring's built-in support for producing an optimized container imag
 docker run -p8080:8080 ghcr.io/digitalservice4germany/java-application-template
 ```
 
-Container images in the registry are [signed with keyless signatures](https://github.com/sigstore/cosign/blob/main/KEYLESS.md)
+Container images in the registry are [signed with keyless signatures](https://github.com/sigstore/cosign/blob/main/KEYLESS.md).
 
 **To verify an image**:
 
