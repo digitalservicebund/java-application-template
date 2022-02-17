@@ -45,7 +45,7 @@ jobs:
   analyze:
     runs-on: ubuntu-latest
     # We only want to analyze trunk, not pull requests!
-    if: ${{ ! startsWith(github.event_name, 'pull_request') }}
+    if: github.event_name != 'pull_request'
     needs: build
     steps:
       - uses: actions/checkout@v2
@@ -82,7 +82,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     # We only want to deploy from trunk, never for pull requests!
-    if: ${{ ! startsWith(github.event_name, 'pull_request') }}
+    if: github.event_name != 'pull_request'
     needs: build
     permissions:
       packages: write
