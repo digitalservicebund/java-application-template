@@ -129,8 +129,7 @@ using [OWASP Dependency-Check](https://jeremylong.github.io/DependencyCheck/depe
 ## Containers
 
 Container images running the application are automatically published to
-the [GitHub Packages Container registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
-.
+the [GitHub Packages Container registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry).
 
 **To run the latest deployed image:**
 
