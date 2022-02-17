@@ -5,9 +5,9 @@ name: Pipeline
 
 on:
   push:
-    branches: [main]
+    branches: [$default-branch]
   pull_request:
-    branches: [main]
+    branches: [$default-branch]
   # Allow to run this workflow manually
   workflow_dispatch:
 
