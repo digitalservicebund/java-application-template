@@ -1,6 +1,7 @@
 # Java Application Template
 
 [![Pipeline](https://github.com/digitalservice4germany/java-application-template/actions/workflows/pipeline.yml/badge.svg)](https://github.com/digitalservice4germany/java-application-template/actions/workflows/pipeline.yml)
+[![Scan](https://github.com/digitalservice4germany/java-application-template/actions/workflows/scan.yml/badge.svg)](https://github.com/digitalservice4germany/java-application-template/actions/workflows/scan.yml)
 [![Dependencies Check](https://github.com/digitalservice4germany/java-application-template/actions/workflows/dependencies-check.yml/badge.svg)](https://github.com/digitalservice4germany/java-application-template/actions/workflows/dependencies-check.yml)
 [![Secrets Check](https://github.com/digitalservice4germany/java-application-template/actions/workflows/secrets-check.yml/badge.svg)](https://github.com/digitalservice4germany/java-application-template/actions/workflows/secrets-check.yml)
 
