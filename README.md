@@ -167,6 +167,25 @@ docker push "ghcr.io/digitalservice4germany/java-application-template:$(git log 
 
 **Note:** Make sure you're using a GitHub token with the necessary `write:packages` scope for this to work.
 
+## Vulnerability Scanning
+
+Scanning container images for vulnerabilities is done with [Trivy](https://github.com/aquasecurity/trivy)
+as part of the build pipeline step, as well as each night for the latest published image in the container
+repository.
+
+**To run a scan locally:**
+
+Install Trivy:
+
+```bash
+brew install aquasecurity/trivy/trivy
+```
+
+```bash
+./gradlew bootBuildImage
+trivy image --severity HIGH,CRITICAL ghcr.io/digitalservice4germany/java-application-template:latest
+```
+
 ## Architecture Decision Records
 
 [Architecture decisions](https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions)
