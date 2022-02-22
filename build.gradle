@@ -4,7 +4,6 @@ plugins {
   id "java"
   id "com.diffplug.spotless" version "6.3.0"
   id "jacoco"
-  id "org.owasp.dependencycheck" version "6.5.1"
   id "org.sonarqube" version "3.3"
 }
 
@@ -127,11 +126,6 @@ spotless {
     target "**/*.sh"
     prettier(["prettier": prettierVersion, "prettier-plugin-sh": "0.7.1"])
   }
-}
-
-dependencyCheck {
-  format = "JSON"
-  failBuildOnCVSS = 7 // Severity: High
 }
 
 sonarqube {

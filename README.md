@@ -2,7 +2,6 @@
 
 [![Pipeline](https://github.com/digitalservice4germany/java-application-template/actions/workflows/pipeline.yml/badge.svg)](https://github.com/digitalservice4germany/java-application-template/actions/workflows/pipeline.yml)
 [![Scan](https://github.com/digitalservice4germany/java-application-template/actions/workflows/scan.yml/badge.svg)](https://github.com/digitalservice4germany/java-application-template/actions/workflows/scan.yml)
-[![Dependencies Check](https://github.com/digitalservice4germany/java-application-template/actions/workflows/dependencies-check.yml/badge.svg)](https://github.com/digitalservice4germany/java-application-template/actions/workflows/dependencies-check.yml)
 [![Secrets Check](https://github.com/digitalservice4germany/java-application-template/actions/workflows/secrets-check.yml/badge.svg)](https://github.com/digitalservice4germany/java-application-template/actions/workflows/secrets-check.yml)
 
 Java service built with
@@ -113,19 +112,6 @@ SONAR_TOKEN=[sonar-token] ./gradlew sonarqube
 Go
 to [https://sonarcloud.io](https://sonarcloud.io/dashboard?id=digitalservice4germany_java-application-template)
 for the results.
-
-## Check dependencies for vulnerabilities
-
-Auditing dependencies for vulnerabilities is done
-using [OWASP Dependency-Check](https://jeremylong.github.io/DependencyCheck/dependency-check-gradle/index.html).
-
-**To run the audit locally:**
-
-```bash
-./gradlew dependencyCheckAnalyze
-```
-
-**Note:** Dependencies are checked on a daily basis in CI.
 
 ## Containers
 
