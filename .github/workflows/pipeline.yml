@@ -50,6 +50,8 @@ jobs:
         if: always() # Bypass non-zero exit code..
         with:
           sarif_file: "trivy-results.sarif"
+      - name: Run license scanner
+        run: ./gradlew checkLicense
       - name: Send status to Slack
         # Third-party action, pin to commit SHA!
         # See https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions

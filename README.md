@@ -186,6 +186,17 @@ brew install aquasecurity/trivy/trivy
 trivy image --severity HIGH,CRITICAL ghcr.io/digitalservice4germany/java-application-template:latest
 ```
 
+## License Scanning
+
+Continuous license scanning is performed as part of the pipeline's build job. Whenever a production
+dependency is being added with a yet unknown license the build is going to fail.
+
+**To run a scan locally:**
+
+```bash
+./gradlew checkLicense
+```
+
 ## Architecture Decision Records
 
 [Architecture decisions](https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions)

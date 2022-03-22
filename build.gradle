@@ -5,6 +5,7 @@ plugins {
   id "com.diffplug.spotless" version "6.3.0"
   id "jacoco"
   id "org.sonarqube" version "3.3"
+  id "com.github.jk1.dependency-license-report" version "2.1"
 }
 
 group = "org.4germany"
@@ -154,4 +155,10 @@ bootBuildImage {
       url = "https://${containerRegistry}"
     }
   }
+}
+
+licenseReport {
+  // If there's a new dependency with a yet unknown license causing this task to fail
+  // the license(s) will be listed in build/reports/dependency-license/dependencies-without-allowed-license.json
+  allowedLicensesFile = new File("$projectDir/allowed-licenses.json")
 }
