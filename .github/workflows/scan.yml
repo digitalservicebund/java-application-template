@@ -17,6 +17,7 @@ jobs:
     permissions:
       security-events: write
     steps:
+      - uses: actions/checkout@v2
       - name: Run Trivy vulnerability scanner
         # Third-party action, pin to commit SHA!
         # See https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions
