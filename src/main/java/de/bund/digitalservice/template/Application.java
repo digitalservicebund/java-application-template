@@ -1,4 +1,4 @@
-package org._4germany.template;
+package de.bund.digitalservice.template;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

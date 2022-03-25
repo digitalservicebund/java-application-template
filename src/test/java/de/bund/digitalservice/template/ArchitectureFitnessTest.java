@@ -1,4 +1,4 @@
-package org._4germany.template;
+package de.bund.digitalservice.template;
 
 import static com.tngtech.archunit.library.dependencies.SlicesRuleDefinition.slices;
 
@@ -6,10 +6,10 @@ import com.tngtech.archunit.junit.AnalyzeClasses;
 import com.tngtech.archunit.junit.ArchTest;
 import com.tngtech.archunit.lang.ArchRule;
 
-@AnalyzeClasses(packages = "org._4germany")
+@AnalyzeClasses(packages = "de.bund.digitalservice")
 class ArchitectureFitnessTest {
 
   @ArchTest
   static final ArchRule preventPackageImportCycles =
-      slices().matching("org._4germany.(**)").should().beFreeOfCycles();
+      slices().matching("de.bund.digitalservice.(**)").should().beFreeOfCycles();
 }

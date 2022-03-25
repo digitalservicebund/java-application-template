@@ -1,4 +1,4 @@
-package org._4germany.template;
+package de.bund.digitalservice.template;
 
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
