@@ -113,7 +113,7 @@ spotless {
     greclipse().configFile("greclipse.properties")
   }
 
-  def prettierVersion = "2.4.1"
+  def prettierVersion = "2.6.1"
 
   format "misc", {
     target "**/*.js", "**/*.json", "**/*.md", "**/*.yml"
