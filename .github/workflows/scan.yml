@@ -15,6 +15,7 @@ jobs:
   scan:
     runs-on: ubuntu-latest
     permissions:
+      packages: read
       security-events: write
     steps:
       - uses: actions/checkout@v2
@@ -22,6 +23,9 @@ jobs:
         # Third-party action, pin to commit SHA!
         # See https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions
         uses: aquasecurity/trivy-action@a7a829a4345428ddd92ca57b18257440f6a18c90 # => 0.2.2
+        env:
+          TRIVY_USERNAME: ${{ github.actor }}
+          TRIVY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
         with:
           image-ref: ${{ env.CONTAINER_REGISTRY }}/${{ env.CONTAINER_IMAGE_NAME }}:${{ env.CONTAINER_IMAGE_VERSION }}
           format: "sarif"
