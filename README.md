@@ -101,7 +101,8 @@ The hooks are supposed to help you to:
 
 ## Code quality analysis
 
-Continuous code quality analysis is done in the pipeline upon pushes to trunk.
+Continuous code quality analysis is performed in the pipeline upon pushing to trunk; it requires a
+token provided as `SONAR_TOKEN` repository secret that needs to be obtained from [https://sonarcloud.io].
 
 **To run the analysis locally:**
 
@@ -109,9 +110,8 @@ Continuous code quality analysis is done in the pipeline upon pushes to trunk.
 SONAR_TOKEN=[sonar-token] ./gradlew sonarqube
 ```
 
-Go
-to [https://sonarcloud.io](https://sonarcloud.io/dashboard?id=digitalservice4germany_java-application-template)
-for the results.
+Go to [https://sonarcloud.io](https://sonarcloud.io/dashboard?id=digitalservice4germany_java-application-template)
+for the analysis results.
 
 ## Containers
 
