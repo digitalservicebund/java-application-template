@@ -106,17 +106,17 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-  deploy:
+  build-and-push-image:
     runs-on: ubuntu-latest
-    # We only want to deploy from trunk, never for pull requests!
+    # We only want to create images from trunk, never for pull requests!
     if: github.event_name != 'pull_request'
     needs: build
     permissions:
-      packages: write
       contents: read
-      # This is used to complete the identity challenge
-      # with sigstore/fulcio.
-      id-token: write
+      id-token: write # This is used to complete the identity challenge with sigstore/fulcio..
+      packages: write
+    outputs:
+      version: ${{ steps.set-version.outputs.version }}
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK
@@ -149,6 +149,8 @@ jobs:
         # This step uses the identity token to provision an ephemeral certificate
         # against the sigstore community Fulcio instance.
         run: cosign sign ${{ env.CONTAINER_REGISTRY }}/${{ env.CONTAINER_IMAGE_NAME }}:${{ env.CONTAINER_IMAGE_VERSION }}
+      - id: set-version
+        run: echo "::set-output name=version::$CONTAINER_IMAGE_VERSION"
       - name: Send status to Slack
         # Third-party action, pin to commit SHA!
         # See https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions
@@ -158,7 +160,7 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         with:
           type: ${{ job.status }}
-          job_name: "Deploy :point_right:"
+          job_name: "Build/push image :point_right:"
           mention: "here"
           mention_if: "failure"
           commit: true
