@@ -103,7 +103,7 @@ spotless {
     target "**/*.js", "**/*.json", "**/*.md", "**/*.properties", "**/*.sh", "**/*.yml"
     // spotless:off
     prettier(["prettier": "2.6.1", "prettier-plugin-properties": "0.1.0", "prettier-plugin-sh": "0.7.1"])
-      .config(["keySeparator": "="])
+        .config(["keySeparator": "="])
     // spotless:on
   }
 }
