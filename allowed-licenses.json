@@ -35,7 +35,6 @@
     },
     {
       "moduleLicense": null,
-      "moduleVersion": "2.13.2",
       "moduleName": "com.fasterxml.jackson:jackson-bom"
     }
   ]
