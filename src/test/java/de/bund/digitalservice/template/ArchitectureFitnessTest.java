@@ -1,15 +1,32 @@
 package de.bund.digitalservice.template;
 
-import static com.tngtech.archunit.library.dependencies.SlicesRuleDefinition.slices;
+import com.tngtech.archunit.core.domain.JavaClasses;
+import com.tngtech.archunit.core.importer.ClassFileImporter;
+import com.tngtech.archunit.core.importer.ImportOption.Predefined;
+import com.tngtech.archunit.library.dependencies.SliceRule;
+import com.tngtech.archunit.library.dependencies.SlicesRuleDefinition;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
-import com.tngtech.archunit.junit.AnalyzeClasses;
-import com.tngtech.archunit.junit.ArchTest;
-import com.tngtech.archunit.lang.ArchRule;
-
-@AnalyzeClasses(packages = "de.bund.digitalservice")
 class ArchitectureFitnessTest {
 
-  @ArchTest
-  static final ArchRule preventPackageImportCycles =
-      slices().matching("de.bund.digitalservice.(**)").should().beFreeOfCycles();
+  static JavaClasses classes;
+
+  @BeforeAll
+  static void setUp() {
+    classes =
+        new ClassFileImporter()
+            .withImportOption(Predefined.DO_NOT_INCLUDE_TESTS)
+            .importPackages("de.bund.digitalservice.template");
+  }
+
+  @Test
+  void packagesShouldBeFreeOfCycles() {
+    SliceRule rule =
+        SlicesRuleDefinition.slices()
+            .matching("de.bund.digitalservice.(**)")
+            .should()
+            .beFreeOfCycles();
+    rule.check(classes);
+  }
 }
