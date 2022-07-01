@@ -1,37 +1,25 @@
 {
   "allowedLicenses": [
     {
-      "moduleLicense": "MIT License"
-    },
-    {
-      "moduleLicense": "The Apache Software License, Version 2.0"
-    },
-    {
       "moduleLicense": "Apache License, Version 2.0"
     },
     {
-      "moduleLicense": "Public Domain, per Creative Commons CC0"
+      "moduleLicense": "MIT License"
     },
     {
-      "moduleLicense": "CC0"
+      "moduleLicense": "Eclipse Public License - v 2.0"
     },
     {
       "moduleLicense": "Eclipse Public License - v 1.0"
     },
     {
-      "moduleLicense": "Eclipse Public License v. 2.0"
+      "moduleLicense": "Creative Commons Legal Code"
     },
     {
-      "moduleLicense": "EPL 2.0"
+      "moduleLicense": "GNU GENERAL PUBLIC LICENSE, Version 2 + Classpath Exception"
     },
     {
       "moduleLicense": "GNU Lesser General Public License"
-    },
-    {
-      "moduleLicense": "GNU General Public License, version 2 with the GNU Classpath Exception"
-    },
-    {
-      "moduleLicense": "GPL2 w/ CPE"
     },
     {
       "moduleLicense": null,
