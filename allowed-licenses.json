@@ -16,12 +16,6 @@
       "moduleLicense": "Creative Commons Legal Code"
     },
     {
-      "moduleLicense": "GNU GENERAL PUBLIC LICENSE, Version 2 + Classpath Exception"
-    },
-    {
-      "moduleLicense": "GNU Lesser General Public License"
-    },
-    {
       "moduleLicense": null,
       "moduleName": "com.fasterxml.jackson:jackson-bom"
     }
