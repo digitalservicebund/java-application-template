@@ -15,6 +15,11 @@ group = "de.bund.digitalservice"
 version = "0.0.1-SNAPSHOT"
 sourceCompatibility = "17"
 
+ext {
+  log4jVersion = "2.18.0"
+  logbackVersion = "1.4.0"
+}
+
 configurations { compileOnly { extendsFrom annotationProcessor } }
 
 repositories { mavenCentral() }
@@ -35,13 +40,6 @@ dependencies {
     exclude group: "io.netty", module: "netty-tcnative-classes"
     because("CVE-2021-43797, not using Tomcat")
   }
-  // => CVE-2021-44228, CVE-2021-45105
-  implementation "org.apache.logging.log4j:log4j-api:2.18.0"
-  // => CVE-2021-44228, CVE-2021-45105
-  implementation "org.apache.logging.log4j:log4j-to-slf4j:2.18.0"
-  // => CVE-2021-42550
-  implementation "ch.qos.logback:logback-classic:1.4.0"
-  implementation "ch.qos.logback:logback-core:1.4.0"
   compileOnly "org.projectlombok:lombok"
   developmentOnly "org.springframework.boot:spring-boot-devtools"
   annotationProcessor "org.projectlombok:lombok"
