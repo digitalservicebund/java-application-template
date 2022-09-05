@@ -15,11 +15,6 @@ group = "de.bund.digitalservice"
 version = "0.0.1-SNAPSHOT"
 sourceCompatibility = "17"
 
-ext {
-  log4jVersion = "2.18.0"
-  logbackVersion = "1.4.0"
-}
-
 configurations { compileOnly { extendsFrom annotationProcessor } }
 
 repositories { mavenCentral() }
