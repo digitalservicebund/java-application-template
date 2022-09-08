@@ -42,7 +42,7 @@ dependencies {
   testImplementation "io.projectreactor:reactor-test"
   testImplementation "org.springframework.security:spring-security-test"
   testImplementation "com.tngtech.archunit:archunit-junit5:0.23.0"
-  testImplementation "org.mockito:mockito-junit-jupiter:4.7.0"
+  testImplementation "org.mockito:mockito-junit-jupiter:4.8.0"
 }
 
 jar { // We have no need for the plain archive, thus skip creation for build speedup!
