@@ -23,6 +23,15 @@ jacoco { toolVersion = "0.8.8" }
 
 testlogger { theme "mocha" }
 
+configurations.all {
+  resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+    if (details.requested.group == "io.projectreactor.netty") {
+      details.useVersion "1.0.24"
+      details.because "addresses CVE-2022-31684, using a constraint didn't work"
+    }
+  }
+}
+
 dependencies {
   implementation "org.springframework.boot:spring-boot-starter-actuator"
   implementation "org.springframework.boot:spring-boot-starter-security"
