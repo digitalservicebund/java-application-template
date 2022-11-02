@@ -26,22 +26,14 @@ testlogger { theme "mocha" }
 dependencies {
   implementation "org.springframework.boot:spring-boot-starter-actuator"
   implementation "org.springframework.boot:spring-boot-starter-security"
-  implementation("org.springframework.boot:spring-boot-starter-webflux") {
-    exclude group: "io.netty", module: "netty-tcnative-classes"
-    because("CVE-2021-43797, not using Tomcat")
-  }
+  implementation("org.springframework.boot:spring-boot-starter-webflux")
 
-  // => CVE-2021-37136, CVE-2021-37137, CVE-2021-43797
-  implementation("io.netty:netty-all:4.1.77.Final") {
-    exclude group: "io.netty", module: "netty-tcnative-classes"
-    because("CVE-2021-43797, not using Tomcat")
-  }
-  // => CVE-2022-42003
-  implementation "com.fasterxml.jackson.core:jackson-databind:2.14.0-rc2"
   // => CVE-2022-25857
   implementation "org.yaml:snakeyaml:1.33"
   // => CVE-2022-31692
   implementation("org.springframework.security:spring-security-core:5.7.5")
+  // => CVE-2022-42003
+  implementation "com.fasterxml.jackson.core:jackson-databind:2.14.0-rc2"
 
   compileOnly "org.projectlombok:lombok"
   developmentOnly "org.springframework.boot:spring-boot-devtools"
