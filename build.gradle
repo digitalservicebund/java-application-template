@@ -1,7 +1,7 @@
 buildscript { repositories { mavenCentral() } }
 
 plugins {
-  id "org.springframework.boot" version "2.7.0"
+  id "org.springframework.boot" version "3.0.0"
   id "io.spring.dependency-management" version "1.1.0"
   id "java"
   id "com.diffplug.spotless" version "6.11.0"
@@ -23,26 +23,10 @@ jacoco { toolVersion = "0.8.8" }
 
 testlogger { theme "mocha" }
 
-configurations.all {
-  resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-    if (details.requested.group == "io.projectreactor.netty") {
-      details.useVersion "1.0.24"
-      details.because "addresses CVE-2022-31684, using a constraint didn't work"
-    }
-  }
-}
-
 dependencies {
   implementation "org.springframework.boot:spring-boot-starter-actuator"
   implementation "org.springframework.boot:spring-boot-starter-security"
   implementation("org.springframework.boot:spring-boot-starter-webflux")
-
-  // => CVE-2022-25857
-  implementation "org.yaml:snakeyaml:1.33"
-  // => CVE-2022-31692
-  implementation("org.springframework.security:spring-security-core:6.0.0")
-  // => CVE-2022-42003
-  implementation "com.fasterxml.jackson.core:jackson-databind:2.14.0-rc2"
 
   compileOnly "org.projectlombok:lombok"
   developmentOnly "org.springframework.boot:spring-boot-devtools"
