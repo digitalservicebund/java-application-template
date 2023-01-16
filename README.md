@@ -182,6 +182,12 @@ brew install aquasecurity/trivy/trivy
 trivy image --severity HIGH,CRITICAL ghcr.io/digitalservicebund/java-application-template:latest
 ```
 
+As part of the automated vulnerability scanning we are generating a Cosign vulnerability scan record using Trivy,
+and then use Cosign to attach an attestation of it to the container image, again
+[signed with keyless signatures](https://github.com/sigstore/cosign/blob/main/KEYLESS.md) similar to signing the
+container image itself. Using a policy engine in a cluster the vulnerability scan can be verified and for instance
+running a container rejected if a scan is not current.
+
 ## License Scanning
 
 License scanning is performed as part of the pipeline's `build` job. Whenever a production dependency
