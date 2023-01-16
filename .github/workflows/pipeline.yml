@@ -122,7 +122,7 @@ jobs:
           format: "cosign-vuln"
           output: "vuln.json"
       - name: Upload cosign vulnerability scan record
-        uses: actions/upload-artifact
+        uses: actions/upload-artifact@v3
         with:
           name: "vuln.json"
           path: "vuln.json"
@@ -238,7 +238,7 @@ jobs:
         # against the sigstore community Fulcio instance.
         run: cosign sign ${{ env.CONTAINER_REGISTRY }}/${{ env.CONTAINER_IMAGE_NAME }}:${{ env.CONTAINER_IMAGE_VERSION }}
       - name: Download cosign vulnerability scan record
-        uses: actions/download-artifact
+        uses: actions/download-artifact@v3
         with:
           name: "vuln.json"
       - name: Attest vulnerability scan
