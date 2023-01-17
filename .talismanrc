@@ -8,4 +8,4 @@ fileignoreconfig:
   - filename: .github/workflows/secrets-check.yml
     checksum: 335f81e88f030498a8c4480c0be3fccc7347ae9ce2808d8580f656b80d982774
   - filename: .github/workflows/scan.yml
-    checksum: a57b18f57dda2e5efc98ee212b55d417580cba66896ec0d46270de537406ee0e
+    checksum: 7cf47d3d12fe81902d91f00a9311aed59809a8540a13264d8b3b550f688aa362
