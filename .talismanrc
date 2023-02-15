@@ -2,6 +2,3 @@ threshold: medium
 allowed_patterns:
   - uses:\ ([A-z0-9\-]+\/)*[A-z0-9\-]+@[a-fA-F0-9]+
   - https://github.com/jk1/Gradle-License-Report/blob/7cf695c38126b63ef9e907345adab84dfa92ea0e/src/main/resources/default-license-normalizer-bundle.json
-fileignoreconfig:
-- filename: build.gradle
-  checksum: 29c1e27a32587585a465d140dcb863dcf1e5f39b5088d84ab4be5af8c59dcfd0
