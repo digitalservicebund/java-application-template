@@ -1,11 +1,4 @@
-fileignoreconfig:
-  - filename: README.md
-    ignore_detectors: [filecontent]
-  - filename: build.gradle
-    checksum: 6b394b6778032c208aa4f617258798587537121acb158d36f428d308ce71d9c2
-  - filename: .github/workflows/pipeline.yml
-    checksum: f51b199803f6fd2fa678c5fd64c9fc85d534eb1927062991233118b24ef946b1
-  - filename: .github/workflows/secrets-check.yml
-    checksum: 335f81e88f030498a8c4480c0be3fccc7347ae9ce2808d8580f656b80d982774
-  - filename: .github/workflows/scan.yml
-    checksum: 565f085b9f03235faa06608cc17cfbedd1f41363872502ff0f2343e28acf2acb
+threshold: medium
+allowed_patterns:
+  - uses:\ ([A-z0-9\-]+\/)*[A-z0-9\-]+@[a-fA-F0-9]+
+  - https://github.com/jk1/Gradle-License-Report/blob/7cf695c38126b63ef9e907345adab84dfa92ea0e/src/main/resources/default-license-normalizer-bundle.json
