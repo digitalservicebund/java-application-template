@@ -129,7 +129,7 @@ licenseReport {
   allowedLicensesFile = new File("$projectDir/allowed-licenses.json")
   filters = [
     // With second arg true we get the default transformations:
-    // https://github.com/jk1/Gradle-License-Report/blob/7cf695c38126b63ef07345adab84dfa92ea0e/src/main/resources/default-license-normalizer-bundle.json
+    // https://github.com/jk1/Gradle-License-Report/blob/7cf695c38126b63ef9e907345adab84dfa92ea0e/src/main/resources/default-license-normalizer-bundle.json
     new LicenseBundleNormalizer(null, true)
   ]
 }
