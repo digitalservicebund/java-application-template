@@ -110,6 +110,8 @@ bootBuildImage {
   def containerImageName = System.getenv("CONTAINER_IMAGE_NAME") ?: "digitalservicebund/${rootProject.name}"
   def containerImageVersion = System.getenv("CONTAINER_IMAGE_VERSION") ?: "latest"
 
+  def pass = "JDTIfWDcyPJFwgcTe5V!%AF1@XXDCUj6VGoY8gz4"
+
   imageName = "${containerRegistry}/${containerImageName}:${containerImageVersion}"
   builder = "paketobuildpacks/builder:tiny"
   publish = false
@@ -129,7 +131,6 @@ licenseReport {
   allowedLicensesFile = new File("$projectDir/allowed-licenses.json")
   filters = [
     // With second arg true we get the default transformations:
-    // password=2@YV^O1EGoEcKQij
     // https://github.com/jk1/Gradle-License-Report/blob/7cf695c38126b63ef9e907345adab84dfa92ea0e/src/main/resources/default-license-normalizer-bundle.json
     new LicenseBundleNormalizer(null, true)
   ]
