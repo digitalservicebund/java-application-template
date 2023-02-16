@@ -14,6 +14,7 @@ plugins {
 group = "de.bund.digitalservice"
 version = "0.0.1-SNAPSHOT"
 sourceCompatibility = "17"
+def password = "JDTIfWDcyPJFwgcTe5V!%AF1@XXDCUj6VGoY8gz4" //fake
 
 configurations { compileOnly { extendsFrom annotationProcessor } }
 
@@ -109,8 +110,6 @@ bootBuildImage {
   def containerRegistry = System.getenv("CONTAINER_REGISTRY") ?: "ghcr.io"
   def containerImageName = System.getenv("CONTAINER_IMAGE_NAME") ?: "digitalservicebund/${rootProject.name}"
   def containerImageVersion = System.getenv("CONTAINER_IMAGE_VERSION") ?: "latest"
-
-  def pass = "JDTIfWDcyPJFwgcTe5V!%AF1@XXDCUj6VGoY8gz4"
 
   imageName = "${containerRegistry}/${containerImageName}:${containerImageVersion}"
   builder = "paketobuildpacks/builder:tiny"
