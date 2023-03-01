@@ -4,4 +4,4 @@ allowed_patterns:
   - https://github.com/jk1/Gradle-License-Report/blob/7cf695c38126b63ef9e907345adab84dfa92ea0e/src/main/resources/default-license-normalizer-bundle.json
 fileignoreconfig:
 - filename: build.gradle
-  checksum: 1b5d644a8f92adacc9d4c6ca445eddcfc24210878013f76176262866da8cbb6f
+  checksum: d0a815e8eaccd24a3d1b76f77b7be4a2f4c6026b93898dbf0862d7d105f251a7
