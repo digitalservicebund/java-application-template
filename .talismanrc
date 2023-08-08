@@ -3,5 +3,5 @@ allowed_patterns:
   - uses:\ ([A-z0-9\-]+\/)*[A-z0-9\-]+@[a-fA-F0-9]+
   - https://github.com/jk1/Gradle-License-Report/blob/7cf695c38126b63ef9e907345adab84dfa92ea0e/src/main/resources/default-license-normalizer-bundle.json
 fileignoreconfig:
-- filename: build.gradle
-  checksum: d0a815e8eaccd24a3d1b76f77b7be4a2f4c6026b93898dbf0862d7d105f251a7
+- filename: build.gradle.kts
+  checksum: 9bc3c26452df16f3bbd0deba8790fbf4a123d7b202738c657762611dbd371482
