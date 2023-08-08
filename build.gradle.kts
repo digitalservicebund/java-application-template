@@ -4,14 +4,16 @@ import com.github.jk1.license.filter.LicenseBundleNormalizer
 buildscript { repositories { mavenCentral() } }
 
 plugins {
-  id("org.springframework.boot") version "3.0.2"
-  id("io.spring.dependency-management") version "1.1.0"
+  alias(libs.plugins.spring.boot)
+  alias(libs.plugins.spring.dependency.management)
   id("java")
-  id("com.diffplug.spotless") version "6.16.0"
+  alias(libs.plugins.spotless)
   id("jacoco")
-  id("org.sonarqube") version "4.0.0.2929"
-  id("com.github.jk1.dependency-license-report") version "2.1"
-  id("com.adarshr.test-logger") version "3.2.0"
+  alias(libs.plugins.sonarqube)
+  alias(libs.plugins.dependency.license.report)
+  alias(libs.plugins.test.logger)
+  alias(libs.plugins.versions)
+  alias(libs.plugins.version.catalog.update)
 }
 
 group = "de.bund.digitalservice"
@@ -27,26 +29,26 @@ configurations { compileOnly { extendsFrom(annotationProcessor.get()) } }
 
 repositories { mavenCentral() }
 
-jacoco { toolVersion = "0.8.8" }
+jacoco { toolVersion = libs.versions.jacoco.get() }
 
 testlogger { theme = ThemeType.MOCHA }
 
 dependencies {
-  implementation("org.springframework.boot:spring-boot-starter-actuator")
-  implementation("org.springframework.boot:spring-boot-starter-security")
-  implementation("org.springframework.boot:spring-boot-starter-webflux")
+  implementation(libs.spring.boot.starter.actuator)
+  implementation(libs.spring.boot.starter.security)
+  implementation(libs.spring.boot.starter.webflux)
 
-  compileOnly("org.projectlombok:lombok")
+  compileOnly(libs.lombok)
 
-  developmentOnly("org.springframework.boot:spring-boot-devtools")
+  developmentOnly(libs.spring.boot.devtools)
 
-  annotationProcessor("org.projectlombok:lombok")
+  annotationProcessor(libs.lombok)
 
-  testImplementation("org.springframework.boot:spring-boot-starter-test")
-  testImplementation("io.projectreactor:reactor-test")
-  testImplementation("org.springframework.security:spring-security-test")
-  testImplementation("com.tngtech.archunit:archunit-junit5:1.0.1")
-  testImplementation("org.mockito:mockito-junit-jupiter:5.1.1")
+  testImplementation(libs.spring.boot.starter.test)
+  testImplementation(libs.reactor.test)
+  testImplementation(libs.spring.security.test)
+  testImplementation(libs.archunit.junit5)
+  testImplementation(libs.mockito.junit.jupiter)
 }
 
 tasks {
@@ -88,7 +90,7 @@ tasks {
 
   jacocoTestReport {
     // Jacoco hooks into all tasks of type: Test automatically, but results for each of these
-    // tasks are kept separately and are not combined out of the box.. we want to gather
+    // tasks are kept separately and are not combined out of the box. we want to gather
     // coverage of our unit and integration tests as a single report!
     executionData.setFrom(
       files(
@@ -101,7 +103,7 @@ tasks {
       xml.required = true
       html.required = true
     }
-    dependsOn("integrationTest") // All tests are required to run before generating a report..
+    dependsOn("integrationTest") // All tests are required to run before generating a report.
   }
 
   jar { // We have no need for the plain archive, thus skip creation for build speedup!
@@ -113,6 +115,17 @@ tasks {
   }
 
   test { useJUnitPlatform { excludeTags("integration") } }
+
+  withType(com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask::class) {
+    fun isStable(version: String): Boolean {
+      val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.uppercase().contains(it) }
+      val regex = "^[0-9,.v-]+(-r)?$".toRegex()
+      return stableKeyword || regex.matches(version)
+    }
+    gradleReleaseChannel = "current"
+    revision = "release"
+    rejectVersionIf { !isStable(candidate.version) }
+  }
 }
 
 spotless {
