@@ -38,6 +38,9 @@ dependencies {
     implementation(libs.spring.boot.starter.security)
     implementation(libs.spring.boot.starter.webflux)
 
+    // CVE-2022-1471
+    implementation(libs.snakeyaml)
+
     compileOnly(libs.lombok)
 
     developmentOnly(libs.spring.boot.devtools)
