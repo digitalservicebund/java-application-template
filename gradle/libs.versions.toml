@@ -8,7 +8,7 @@ archunit-junit5 = "com.tngtech.archunit:archunit-junit5:1.1.0"
 lombok = { module = "org.projectlombok:lombok" }
 mockito-junit-jupiter = "org.mockito:mockito-junit-jupiter:5.5.0"
 reactor-test = { module = "io.projectreactor:reactor-test" }
-snakeyaml = "org.yaml:snakeyaml:2.1"
+snakeyaml = "org.yaml:snakeyaml:2.2"
 spring-boot-devtools = { module = "org.springframework.boot:spring-boot-devtools" }
 spring-boot-starter-actuator = { module = "org.springframework.boot:spring-boot-starter-actuator" }
 spring-boot-starter-security = { module = "org.springframework.boot:spring-boot-starter-security" }
