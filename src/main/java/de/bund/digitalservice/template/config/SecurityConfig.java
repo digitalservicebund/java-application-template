@@ -13,7 +13,7 @@ public class SecurityConfig {
   @Bean
   public SecurityWebFilterChain springSecurityWebFilterChain(ServerHttpSecurity http) {
     return http.authorizeExchange(
-            (exchanges) ->
+            exchanges ->
                 exchanges
                     .pathMatchers("/.well-known/security.txt")
                     .permitAll()
