@@ -39,20 +39,10 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build
       - name: Send status to Slack
-        # Third-party action, pin to commit SHA!
-        # See https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions
-        uses: lazy-actions/slatify@c4847b8c84e3e8076fd3c42cc00517a10426ed65
-        if: ${{ failure() && github.ref == 'refs/heads/main' && env.SLACK_WEBHOOK_URL }}
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        uses: digitalservicebund/notify-on-failure-gha@0b21f14f28717b3b756282824976cdd1354b1235 # v1.3.0
+        if: ${{ failure() && github.ref == 'refs/heads/main' }}
         with:
-          type: ${{ job.status }}
-          job_name: "Build :point_right:"
-          mention: "here"
-          mention_if: "failure"
-          commit: true
-          url: ${{ secrets.SLACK_WEBHOOK_URL }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
   audit-licenses:
     runs-on: ubuntu-latest
@@ -69,20 +59,10 @@ jobs:
       - name: Run license scanner
         run: ./gradlew checkLicense
       - name: Send status to Slack
-        # Third-party action, pin to commit SHA!
-        # See https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions
-        uses: lazy-actions/slatify@c4847b8c84e3e8076fd3c42cc00517a10426ed65
-        if: ${{ failure() && github.ref == 'refs/heads/main' && env.SLACK_WEBHOOK_URL }}
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        uses: digitalservicebund/notify-on-failure-gha@0b21f14f28717b3b756282824976cdd1354b1235 # v1.3.0
+        if: ${{ failure() && github.ref == 'refs/heads/main' }}
         with:
-          type: ${{ job.status }}
-          job_name: "License audit :point_right:"
-          mention: "here"
-          mention_if: "failure"
-          commit: true
-          url: ${{ secrets.SLACK_WEBHOOK_URL }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
   vulnerability-scan:
     runs-on: ubuntu-latest
@@ -133,20 +113,10 @@ jobs:
           path: "vuln.json"
           if-no-files-found: error
       - name: Send status to Slack
-        # Third-party action, pin to commit SHA!
-        # See https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions
-        uses: lazy-actions/slatify@c4847b8c84e3e8076fd3c42cc00517a10426ed65
-        if: ${{ failure() && github.ref == 'refs/heads/main' && env.SLACK_WEBHOOK_URL }}
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        uses: digitalservicebund/notify-on-failure-gha@0b21f14f28717b3b756282824976cdd1354b1235 # v1.3.0
+        if: ${{ failure() && github.ref == 'refs/heads/main' }}
         with:
-          type: ${{ job.status }}
-          job_name: "Vulnerability scan :point_right:"
-          mention: "here"
-          mention_if: "failure"
-          commit: true
-          url: ${{ secrets.SLACK_WEBHOOK_URL }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
   analyze:
     runs-on: ubuntu-latest
@@ -183,20 +153,10 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       - name: Send status to Slack
-        # Third-party action, pin to commit SHA!
-        # See https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions
-        uses: lazy-actions/slatify@c4847b8c84e3e8076fd3c42cc00517a10426ed65
-        if: ${{ failure() && env.SLACK_WEBHOOK_URL }}
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        uses: digitalservicebund/notify-on-failure-gha@0b21f14f28717b3b756282824976cdd1354b1235 # v1.3.0
+        if: ${{ failure() && github.ref == 'refs/heads/main' }}
         with:
-          type: ${{ job.status }}
-          job_name: "Analyze :point_right:"
-          mention: "here"
-          mention_if: "failure"
-          commit: true
-          url: ${{ secrets.SLACK_WEBHOOK_URL }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
   build-and-push-image:
     runs-on: ubuntu-latest
@@ -252,17 +212,7 @@ jobs:
       - id: set-version
         run: echo "version=$CONTAINER_IMAGE_VERSION" >> $GITHUB_OUTPUT
       - name: Send status to Slack
-        # Third-party action, pin to commit SHA!
-        # See https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions
-        uses: lazy-actions/slatify@c4847b8c84e3e8076fd3c42cc00517a10426ed65
-        if: ${{ failure() && env.SLACK_WEBHOOK_URL }}
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        uses: digitalservicebund/notify-on-failure-gha@0b21f14f28717b3b756282824976cdd1354b1235 # v1.3.0
+        if: ${{ failure() && github.ref == 'refs/heads/main' }}
         with:
-          type: ${{ job.status }}
-          job_name: "Build/push image :point_right:"
-          mention: "here"
-          mention_if: "failure"
-          commit: true
-          url: ${{ secrets.SLACK_WEBHOOK_URL }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
