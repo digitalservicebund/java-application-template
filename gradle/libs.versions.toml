@@ -2,7 +2,7 @@
 # @keep
 jacoco = "0.8.8"
 logback = "1.4.14"
-spring-boot = "3.1.5"
+spring-boot = "3.2.0"
 
 [libraries]
 archunit-junit5 = "com.tngtech.archunit:archunit-junit5:1.2.1"
