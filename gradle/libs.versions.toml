@@ -5,7 +5,7 @@ logback = "1.4.14"
 spring-boot = "3.1.5"
 
 [libraries]
-archunit-junit5 = "com.tngtech.archunit:archunit-junit5:1.2.0"
+archunit-junit5 = "com.tngtech.archunit:archunit-junit5:1.2.1"
 logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
 logback-core = { module = "ch.qos.logback:logback-core", version.ref = "logback" }
 lombok = { module = "org.projectlombok:lombok" }
