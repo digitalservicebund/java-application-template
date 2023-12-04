@@ -9,7 +9,7 @@ archunit-junit5 = "com.tngtech.archunit:archunit-junit5:1.2.1"
 logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
 logback-core = { module = "ch.qos.logback:logback-core", version.ref = "logback" }
 lombok = { module = "org.projectlombok:lombok" }
-mockito-junit-jupiter = "org.mockito:mockito-junit-jupiter:5.7.0"
+mockito-junit-jupiter = "org.mockito:mockito-junit-jupiter:5.8.0"
 reactor-netty-http = "io.projectreactor.netty:reactor-netty-http:1.1.13"
 reactor-test = { module = "io.projectreactor:reactor-test" }
 snakeyaml = "org.yaml:snakeyaml:2.2"
