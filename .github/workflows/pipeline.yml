@@ -39,7 +39,7 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build
       - name: Send status to Slack
-        uses: digitalservicebund/notify-on-failure-gha@0b21f14f28717b3b756282824976cdd1354b1235 # v1.3.0
+        uses: digitalservicebund/notify-on-failure-gha@15dd05b628141b7bac0ad26e08c1935cb3ba6bc8 # v1.4.0
         if: ${{ failure() && github.ref == 'refs/heads/main' }}
         with:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
@@ -59,7 +59,7 @@ jobs:
       - name: Run license scanner
         run: ./gradlew checkLicense
       - name: Send status to Slack
-        uses: digitalservicebund/notify-on-failure-gha@0b21f14f28717b3b756282824976cdd1354b1235 # v1.3.0
+        uses: digitalservicebund/notify-on-failure-gha@15dd05b628141b7bac0ad26e08c1935cb3ba6bc8 # v1.4.0
         if: ${{ failure() && github.ref == 'refs/heads/main' }}
         with:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
@@ -113,7 +113,7 @@ jobs:
           path: "vuln.json"
           if-no-files-found: error
       - name: Send status to Slack
-        uses: digitalservicebund/notify-on-failure-gha@0b21f14f28717b3b756282824976cdd1354b1235 # v1.3.0
+        uses: digitalservicebund/notify-on-failure-gha@15dd05b628141b7bac0ad26e08c1935cb3ba6bc8 # v1.4.0
         if: ${{ failure() && github.ref == 'refs/heads/main' }}
         with:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
@@ -153,7 +153,7 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       - name: Send status to Slack
-        uses: digitalservicebund/notify-on-failure-gha@0b21f14f28717b3b756282824976cdd1354b1235 # v1.3.0
+        uses: digitalservicebund/notify-on-failure-gha@15dd05b628141b7bac0ad26e08c1935cb3ba6bc8 # v1.4.0
         if: ${{ failure() && github.ref == 'refs/heads/main' }}
         with:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
@@ -212,7 +212,7 @@ jobs:
       - id: set-version
         run: echo "version=$CONTAINER_IMAGE_VERSION" >> $GITHUB_OUTPUT
       - name: Send status to Slack
-        uses: digitalservicebund/notify-on-failure-gha@0b21f14f28717b3b756282824976cdd1354b1235 # v1.3.0
+        uses: digitalservicebund/notify-on-failure-gha@15dd05b628141b7bac0ad26e08c1935cb3ba6bc8 # v1.4.0
         if: ${{ failure() && github.ref == 'refs/heads/main' }}
         with:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
