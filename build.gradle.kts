@@ -38,6 +38,9 @@ dependencies {
     implementation(libs.spring.boot.starter.security)
     implementation(libs.spring.boot.starter.webflux)
 
+    // CVE-2024-22234
+    implementation(libs.spring.security.core)
+
     compileOnly(libs.lombok)
 
     developmentOnly(libs.spring.boot.devtools)
