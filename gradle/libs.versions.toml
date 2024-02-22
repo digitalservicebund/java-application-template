@@ -13,7 +13,8 @@ spring-boot-starter-actuator = { module = "org.springframework.boot:spring-boot-
 spring-boot-starter-security = { module = "org.springframework.boot:spring-boot-starter-security" }
 spring-boot-starter-test = { module = "org.springframework.boot:spring-boot-starter-test" }
 spring-boot-starter-webflux = { module = "org.springframework.boot:spring-boot-starter-webflux" }
-spring-security-test = { module = "org.springframework.security:spring-security-test" }
+# version pinned for CVE-2024-22234
+spring-security-test = "org.springframework.security:spring-security-test:6.2.2"
 
 [plugins]
 dependency-license-report = "com.github.jk1.dependency-license-report:2.5"
