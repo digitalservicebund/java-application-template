@@ -138,7 +138,7 @@ Container images in the registry are [signed with keyless signatures](https://gi
 **To verify an image**:
 
 ```bash
-cosign verify "ghcr.io/digitalservicebund/java-application-template:$(git log -1 origin/main --format='%H')"
+cosign verify "ghcr.io/digitalservicebund/java-application-template:$(git log -1 origin/main --format='%H')" --certificate-identity="https://github.com/digitalservicebund/java-application-template/.github/workflows/pipeline.yml@refs/heads/main" --certificate-oidc-issuer="https://token.actions.githubusercontent.com"
 ```
 
 If you need to push a new container image to the registry manually there are two ways to do this:
