@@ -73,8 +73,6 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Attest vulnerability scan
         run: cosign attest --yes --replace --predicate vuln.json --type vuln ${{ env.CONTAINER_REGISTRY }}/${{ env.CONTAINER_IMAGE_NAME }}:${{ env.CONTAINER_IMAGE_VERSION }}
-        env:
-          COSIGN_EXPERIMENTAL: "true"
       - name: Send status to Slack
         uses: digitalservicebund/notify-on-failure-gha@15dd05b628141b7bac0ad26e08c1935cb3ba6bc8 # v1.4.0
         if: ${{ failure() && github.ref == 'refs/heads/main' }}
