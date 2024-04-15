@@ -4,7 +4,7 @@ jacoco = "0.8.8"
 spring-boot = "3.2.4"
 
 [libraries]
-archunit-junit5 = "com.tngtech.archunit:archunit-junit5:1.2.1"
+archunit-junit5 = "com.tngtech.archunit:archunit-junit5:1.3.0"
 lombok = { module = "org.projectlombok:lombok" }
 mockito-junit-jupiter = "org.mockito:mockito-junit-jupiter:5.11.0"
 reactor-test = { module = "io.projectreactor:reactor-test" }
