@@ -16,7 +16,7 @@ spring-boot-starter-webflux = { module = "org.springframework.boot:spring-boot-s
 spring-security-test = { module = "org.springframework.security:spring-security-test" }
 
 [plugins]
-dependency-license-report = "com.github.jk1.dependency-license-report:2.6"
+dependency-license-report = "com.github.jk1.dependency-license-report:2.7"
 sonarqube = "org.sonarqube:5.0.0.4638"
 spotless = "com.diffplug.spotless:6.25.0"
 spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
