@@ -175,6 +175,6 @@ licenseReport {
         arrayOf(
             // With second arg true we get the default transformations:
             // https://github.com/jk1/Gradle-License-Report/blob/7cf695c38126b63ef9e907345adab84dfa92ea0e/src/main/resources/default-license-normalizer-bundle.json
-            LicenseBundleNormalizer(null, true),
+            LicenseBundleNormalizer(null as String?, true),
         )
 }
