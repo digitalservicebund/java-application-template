@@ -83,6 +83,7 @@ jobs:
           image-ref: ${{ env.CONTAINER_REGISTRY }}/${{ env.CONTAINER_IMAGE_NAME }}:${{ env.CONTAINER_IMAGE_VERSION }}
           format: "sarif"
           output: "trivy-results.sarif"
+          cache: 'false'
       # Uploading sarif files only works for public repos, in case you have a private repo, please remove the lines below
       - name: Upload Trivy scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v3
@@ -101,6 +102,7 @@ jobs:
           image-ref: ${{ env.CONTAINER_REGISTRY }}/${{ env.CONTAINER_IMAGE_NAME }}:${{ env.CONTAINER_IMAGE_VERSION }}
           format: "cosign-vuln"
           output: "vuln.json"
+          cache: 'false'
       - name: Upload cosign vulnerability scan record
         uses: actions/upload-artifact@v4
         with:
