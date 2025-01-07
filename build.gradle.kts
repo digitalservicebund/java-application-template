@@ -107,7 +107,8 @@ tasks {
         dependsOn("integrationTest") // All tests are required to run before generating a report.
     }
 
-    jar { // We have no need for the plain archive, thus skip creation for build speedup!
+    jar {
+        // We have no need for the plain archive, thus skip creation for build speedup!
         enabled = false
     }
 
