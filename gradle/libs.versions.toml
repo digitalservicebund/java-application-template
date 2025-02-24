@@ -4,7 +4,7 @@ jacoco = "0.8.12"
 spring-boot = "3.4.2"
 
 [libraries]
-archunit-junit5 = "com.tngtech.archunit:archunit-junit5:1.3.0"
+archunit-junit5 = "com.tngtech.archunit:archunit-junit5:1.4.0"
 lombok = { module = "org.projectlombok:lombok" }
 mockito-junit-jupiter = "org.mockito:mockito-junit-jupiter:5.15.2"
 netty-common = "io.netty:netty-common:4.1.118.Final"
