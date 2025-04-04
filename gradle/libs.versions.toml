@@ -7,7 +7,7 @@ spring-boot = "3.4.4"
 archunit-junit5 = "com.tngtech.archunit:archunit-junit5:1.4.0"
 lombok = { module = "org.projectlombok:lombok" }
 mockito-junit-jupiter = "org.mockito:mockito-junit-jupiter:5.16.1"
-netty-common = "io.netty:netty-common:4.1.119.Final"
+netty-common = "io.netty:netty-common:4.2.0.Final"
 reactor-test = { module = "io.projectreactor:reactor-test" }
 spring-boot-devtools = { module = "org.springframework.boot:spring-boot-devtools" }
 spring-boot-starter-actuator = { module = "org.springframework.boot:spring-boot-starter-actuator" }
