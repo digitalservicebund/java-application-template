@@ -19,7 +19,7 @@ spring-security-test = { module = "org.springframework.security:spring-security-
 [plugins]
 dependency-license-report = "com.github.jk1.dependency-license-report:2.9"
 sonarqube = "org.sonarqube:6.1.0.5360"
-spotless = "com.diffplug.spotless:7.0.3"
+spotless = "com.diffplug.spotless:7.1.0"
 spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
 spring-dependency-management = "io.spring.dependency-management:1.1.7"
 test-logger = "com.adarshr.test-logger:4.0.0"
