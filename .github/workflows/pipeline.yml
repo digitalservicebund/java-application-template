@@ -87,7 +87,7 @@ jobs:
           output: "trivy-results.sarif"
       # Uploading sarif files only works for public repos, in case you have a private repo, please remove the lines below
       - name: Upload Trivy scan results to GitHub Security tab
-        uses: github/codeql-action/upload-sarif@v3
+        uses: github/codeql-action/upload-sarif@v4
         if: ${{ always() && github.ref == 'refs/heads/main' }} # Bypass non-zero exit code..
         with:
           sarif_file: "trivy-results.sarif"
