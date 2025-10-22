@@ -1,3 +1,7 @@
+**⚠️ ARCHIVED, since it's not activly maintained at the moment. We might reactive this if we have more capacity. ⚠️**
+
+-> Reach out to the platform team if you want to start a new project
+
 # Java Application Template
 
 [![Pipeline](https://github.com/digitalservicebund/java-application-template/actions/workflows/pipeline.yml/badge.svg)](https://github.com/digitalservicebund/java-application-template/actions/workflows/pipeline.yml)
